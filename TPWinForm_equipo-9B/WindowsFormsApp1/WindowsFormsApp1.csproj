@@ -46,14 +46,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="frmArticulos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmArticulos.Designer.cs">
+      <DependentUpon>frmArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAltaArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAltaArticulo.Designer.cs">
+      <DependentUpon>frmAltaArticulo.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmArticulos.resx">
+      <DependentUpon>frmArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAltaArticulo.resx">
+      <DependentUpon>frmAltaArticulo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -75,6 +87,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dominio\dominio.csproj">
+      <Project>{2ce8de52-4472-47e8-ad7f-b4fe0902fc6c}</Project>
+      <Name>dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\negocio\negocio.csproj">
+      <Project>{c521e3c6-a4a8-4f20-95e9-9746a0710e40}</Project>
+      <Name>negocio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
