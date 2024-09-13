@@ -17,6 +17,27 @@ namespace negocio
             get { return lector; }
         }
 
+        public void setearParametro(string nombre, object valor)
+        {
+            comando.Parameters.AddWithValue(nombre, valor);
+        }
+
+
+        public void EjecutarLectura()
+        {
+            comando.Connection = conexion;
+
+            try
+            {
+                conexion.Open();
+                lector = comando.ExecuteReader();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void EjecutarAccion()
         {
             comando.Connection = conexion;
@@ -28,6 +49,16 @@ namespace negocio
             catch(Exception ex)
             {
                 throw ex;
+            }
+        }
+
+
+        public void cerrarConexion()
+        {
+            if(lector != null)
+            {
+                lector.Close();
+                conexion.Close();
             }
         }
 

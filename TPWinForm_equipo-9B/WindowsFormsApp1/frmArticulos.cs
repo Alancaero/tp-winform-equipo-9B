@@ -19,6 +19,18 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
+        private void CargarImagen(string Imagen)
+        {
+            try
+            {
+                pbxArticulos.Load(Imagen);
+            }
+            catch(Exception ex)
+            {
+                pbxArticulos.Load("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
+            }
+        }
+
         private void buttonAgregar_Click(object sender, EventArgs e)
         {
             frmAltaArticulo alta = new frmAltaArticulo();
