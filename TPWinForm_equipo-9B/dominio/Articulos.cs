@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace dominio
 {
-    internal class Articulos
+    public class Articulos
     {
         [DisplayName("Código")]
         public int Codigo { get; set; }

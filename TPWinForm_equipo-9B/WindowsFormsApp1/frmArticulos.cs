@@ -14,6 +14,7 @@ namespace WindowsFormsApp1
 {
     public partial class frmArticulos : Form
     {
+        private List<Articulos> listaArticulos;
         public frmArticulos()
         {
             InitializeComponent();
