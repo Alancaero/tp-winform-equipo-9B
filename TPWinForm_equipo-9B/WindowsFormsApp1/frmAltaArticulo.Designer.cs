@@ -146,6 +146,7 @@
             this.textImagen.Name = "textImagen";
             this.textImagen.Size = new System.Drawing.Size(143, 20);
             this.textImagen.TabIndex = 11;
+            this.textImagen.Leave += new System.EventHandler(this.textImagen_Leave);
             // 
             // lblPrecio
             // 
@@ -230,6 +231,7 @@
             this.Name = "frmAltaArticulo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta Articulo";
+            this.Load += new System.EventHandler(this.frmAltaArticulo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

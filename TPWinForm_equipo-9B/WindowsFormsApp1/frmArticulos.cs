@@ -40,11 +40,103 @@ namespace WindowsFormsApp1
 
         private void buttonModificar_Click(object sender, EventArgs e)
         {
-            
+            Articulos seleccionado;
+            seleccionado = (Articulos)dgvArticulos.CurrentRow.DataBoundItem;
+
+            frmAltaArticulo modificar = new frmAltaArticulo(seleccionado);
+            modificar.ShowDialog();
+            Cargar();
         }
 
         private void buttonEliminarFisico_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void Eliminar()
+        {
+            Articulos seleccionado;
+
+            try
+            {
+                DialogResult respuesta = MessageBox.Show("¿Queres eliminar el articulo?","Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (respuesta == DialogResult.Yes)
+                {
+                    seleccionado = (Articulos)dgvArticulos.CurrentRow.DataBoundItem;
+
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void frmArticulos_Load(object sender, EventArgs e)
+        {
+            Cargar();
+            cbxCampo.Items.Add("Numero");
+            cbxCampo.Items.Add("Nombre");
+            cbxCampo.Items.Add("Descripcion");
+        }
+
+        private void dgvArticulo_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvArticulos.CurrentRow != null)
+            {
+                Articulos seleccionado = (Articulos)dgvArticulos.CurrentRow.DataBoundItem;
+                
+            }
+        }
+
+        private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string opcion = cbxCampo.SelectedIndex.ToString();
+            if (opcion == "Numero")
+            {
+                cbxCriterio.Items.Clear();
+                cbxCriterio.Items.Add("Mayor a");
+                cbxCriterio.Items.Add("Menor a");
+                cbxCriterio.Items.Add("Igual a");
+            }
+            else
+            {
+                cbxCriterio.Items.Clear();
+                cbxCriterio.Items.Add("Comienza con");
+                cbxCriterio.Items.Add("Termina con");
+                cbxCriterio.Items.Add("Contiene");
+            }
+        }
+
+        private void Cargar()
+        {
+            try
+            {
+
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            List<Articulos> listaFiltrada;
+            string filtro = txtFiltro.Text;
+
+            if (filtro.Length >= 3)
+            {
+                listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()));
+
+            }
+            else
+            {
+                listaFiltrada = listaArticulos;
+            }
+
+            dgvArticulos.DataSource = null;
+            dgvArticulos.DataSource = listaFiltrada;
             
         }
     }

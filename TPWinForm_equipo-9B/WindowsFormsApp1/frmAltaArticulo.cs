@@ -24,7 +24,12 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
-       
+        public frmAltaArticulo(Articulos articulos)
+        {
+            InitializeComponent();
+            this.articulos = articulos;
+            Text = "Modificar Articulos";
+        }
 
 
 
@@ -37,8 +42,31 @@ namespace WindowsFormsApp1
 
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
+            ArticulosNegocio negocio = new ArticulosNegocio();
 
+            try
+            {
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
+
+       
+
+    
+
+        private void frmAltaArticulo_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void textImagen_Leave(object sender, EventArgs e)
+        {
+            CargarImagen(textImagen.Text);
+        } 
 
         private void CargarImagen(string imagen)
         {

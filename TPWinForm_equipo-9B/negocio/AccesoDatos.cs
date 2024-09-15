@@ -17,11 +17,11 @@ namespace negocio
             get { return lector; }
         }
 
-        public void setearParametro(string nombre, object valor)
+        public void setearConsulta(string consulta)
         {
-            comando.Parameters.AddWithValue(nombre, valor);
+            comando.CommandType = System.Data.CommandType.Text;
+            comando.CommandText = consulta;
         }
-
 
         public void EjecutarLectura()
         {
@@ -52,6 +52,10 @@ namespace negocio
             }
         }
 
+        public void setearParametro(string nombre, object valor)
+        {
+            comando.Parameters.AddWithValue(nombre, valor);
+        }
 
         public void cerrarConexion()
         {
