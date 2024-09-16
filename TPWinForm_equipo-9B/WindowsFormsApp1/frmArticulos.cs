@@ -14,11 +14,18 @@ namespace WindowsFormsApp1
 {
     public partial class frmArticulos : Form
     {
+
+        private Articulos articulo = null;
+        
+
         private List<Articulos> listaArticulos;
         public frmArticulos()
         {
             InitializeComponent();
         }
+
+ 
+
 
         private void CargarImagen(string Imagen)
         {
@@ -76,6 +83,8 @@ namespace WindowsFormsApp1
         {
                 ArticulosNegocio negocio = new ArticulosNegocio();
                 dgvArticulos.DataSource = negocio.listar(); 
+
+
         }
 
         private void dgvArticulo_SelectionChanged(object sender, EventArgs e)

@@ -71,7 +71,19 @@ namespace WindowsFormsApp1
 
         private void frmAltaArticulo_Load(object sender, EventArgs e)
         {
-            
+
+            ArticulosNegocio negocio = new ArticulosNegocio();
+         //   pbxArticulo.DataSource = negocio.listar();
+
+            if(articulos != null)
+            {
+                textCodigo.Text = articulos.Codigo;
+                textDescripcion.Text = articulos.Descripcion;
+                textNombre.Text = articulos.Nombre;
+                textPrecio.Text = articulos.precio.ToString();
+
+            }
+
         }
 
         private void textImagen_Leave(object sender, EventArgs e)
