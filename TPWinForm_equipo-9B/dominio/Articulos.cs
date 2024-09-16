@@ -17,16 +17,14 @@ namespace dominio
         [DisplayName("Descripción")]
         public string Descripcion { get; set; }
         public decimal precio { get; set; }
-        
-        /*CREAR LAS SIGUIENTES CLASES
-        Class Marcas
-        Class Imagen
-        Class Categoria
 
-        PARA LUEGO APLICAR public Categoria categoria {get; set;}, asi tambien con imagen y categoria
+        public Marcas marcas { get; set; }
 
-        Todo esto comentado anteriormente en dominio la creación de estas tres clases
-        */
+        public Categoria categoria { get; set; }
+
+        public Imagen imagen { get; set; }
+
+       
 
     }
 }
