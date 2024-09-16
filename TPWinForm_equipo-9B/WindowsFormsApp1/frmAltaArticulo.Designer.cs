@@ -35,9 +35,9 @@
             this.textDescripcion = new System.Windows.Forms.TextBox();
             this.lblDescripcion = new System.Windows.Forms.Label();
             this.lblMarca = new System.Windows.Forms.Label();
-            this.cbxMarca = new System.Windows.Forms.ComboBox();
+            this.txtMarca = new System.Windows.Forms.ComboBox();
             this.lblCategoria = new System.Windows.Forms.Label();
-            this.cbxCategoria = new System.Windows.Forms.ComboBox();
+            this.txtCategoria = new System.Windows.Forms.ComboBox();
             this.lblImagen = new System.Windows.Forms.Label();
             this.textImagen = new System.Windows.Forms.TextBox();
             this.lblPrecio = new System.Windows.Forms.Label();
@@ -60,6 +60,7 @@
             // 
             // textCodigo
             // 
+            this.textCodigo.AccessibleName = "txtCodigo";
             this.textCodigo.Location = new System.Drawing.Point(150, 29);
             this.textCodigo.Name = "textCodigo";
             this.textCodigo.Size = new System.Drawing.Size(143, 20);
@@ -76,13 +77,16 @@
             // 
             // textNombre
             // 
+            this.textNombre.AccessibleName = "txtNombre";
             this.textNombre.Location = new System.Drawing.Point(150, 61);
             this.textNombre.Name = "textNombre";
             this.textNombre.Size = new System.Drawing.Size(143, 20);
             this.textNombre.TabIndex = 3;
+            this.textNombre.TextChanged += new System.EventHandler(this.textNombre_TextChanged);
             // 
             // textDescripcion
             // 
+            this.textDescripcion.AccessibleName = "txtDescripcion";
             this.textDescripcion.Location = new System.Drawing.Point(150, 100);
             this.textDescripcion.Name = "textDescripcion";
             this.textDescripcion.Size = new System.Drawing.Size(143, 20);
@@ -106,13 +110,14 @@
             this.lblMarca.TabIndex = 6;
             this.lblMarca.Text = "Marca";
             // 
-            // cbxMarca
+            // txtMarca
             // 
-            this.cbxMarca.FormattingEnabled = true;
-            this.cbxMarca.Location = new System.Drawing.Point(150, 142);
-            this.cbxMarca.Name = "cbxMarca";
-            this.cbxMarca.Size = new System.Drawing.Size(143, 21);
-            this.cbxMarca.TabIndex = 7;
+            this.txtMarca.AccessibleName = "txtMarca";
+            this.txtMarca.FormattingEnabled = true;
+            this.txtMarca.Location = new System.Drawing.Point(150, 142);
+            this.txtMarca.Name = "txtMarca";
+            this.txtMarca.Size = new System.Drawing.Size(143, 21);
+            this.txtMarca.TabIndex = 7;
             // 
             // lblCategoria
             // 
@@ -123,13 +128,14 @@
             this.lblCategoria.TabIndex = 8;
             this.lblCategoria.Text = "Categoría";
             // 
-            // cbxCategoria
+            // txtCategoria
             // 
-            this.cbxCategoria.FormattingEnabled = true;
-            this.cbxCategoria.Location = new System.Drawing.Point(150, 178);
-            this.cbxCategoria.Name = "cbxCategoria";
-            this.cbxCategoria.Size = new System.Drawing.Size(143, 21);
-            this.cbxCategoria.TabIndex = 9;
+            this.txtCategoria.AccessibleName = "txtCategoria";
+            this.txtCategoria.FormattingEnabled = true;
+            this.txtCategoria.Location = new System.Drawing.Point(150, 178);
+            this.txtCategoria.Name = "txtCategoria";
+            this.txtCategoria.Size = new System.Drawing.Size(143, 21);
+            this.txtCategoria.TabIndex = 9;
             // 
             // lblImagen
             // 
@@ -142,6 +148,7 @@
             // 
             // textImagen
             // 
+            this.textImagen.AccessibleName = "txtImagen";
             this.textImagen.Location = new System.Drawing.Point(150, 217);
             this.textImagen.Name = "textImagen";
             this.textImagen.Size = new System.Drawing.Size(143, 20);
@@ -159,6 +166,7 @@
             // 
             // textPrecio
             // 
+            this.textPrecio.AccessibleName = "txtPrecio";
             this.textPrecio.Location = new System.Drawing.Point(150, 251);
             this.textPrecio.Name = "textPrecio";
             this.textPrecio.Size = new System.Drawing.Size(143, 20);
@@ -215,9 +223,9 @@
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.textImagen);
             this.Controls.Add(this.lblImagen);
-            this.Controls.Add(this.cbxCategoria);
+            this.Controls.Add(this.txtCategoria);
             this.Controls.Add(this.lblCategoria);
-            this.Controls.Add(this.cbxMarca);
+            this.Controls.Add(this.txtMarca);
             this.Controls.Add(this.lblMarca);
             this.Controls.Add(this.lblDescripcion);
             this.Controls.Add(this.textDescripcion);
@@ -247,9 +255,9 @@
         private System.Windows.Forms.TextBox textDescripcion;
         private System.Windows.Forms.Label lblDescripcion;
         private System.Windows.Forms.Label lblMarca;
-        private System.Windows.Forms.ComboBox cbxMarca;
+        private System.Windows.Forms.ComboBox txtMarca;
         private System.Windows.Forms.Label lblCategoria;
-        private System.Windows.Forms.ComboBox cbxCategoria;
+        private System.Windows.Forms.ComboBox txtCategoria;
         private System.Windows.Forms.Label lblImagen;
         private System.Windows.Forms.TextBox textImagen;
         private System.Windows.Forms.Label lblPrecio;

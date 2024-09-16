@@ -42,10 +42,21 @@ namespace WindowsFormsApp1
 
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
+            Articulos art = new Articulos();
             ArticulosNegocio negocio = new ArticulosNegocio();
 
             try
             {
+                art.Codigo = textCodigo.Text;
+                art.Nombre = textNombre.Text;
+                art.Descripcion = textDescripcion.Text;
+                art.precio = decimal.Parse(textPrecio.Text);
+
+
+                negocio.agregar(art);
+                MessageBox.Show("Agregadooo");
+                Close();
+
 
             }
             catch(Exception ex)
@@ -91,6 +102,11 @@ namespace WindowsFormsApp1
                 textImagen.Text = archivo.FileName;
                 CargarImagen(archivo.FileName);
             }
+        }
+
+        private void textNombre_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

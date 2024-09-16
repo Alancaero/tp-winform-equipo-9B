@@ -56,6 +56,7 @@
             // 
             // dgvArticulos
             // 
+            this.dgvArticulos.AccessibleName = "dgvArticulos";
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.Location = new System.Drawing.Point(3, 90);
             this.dgvArticulos.Name = "dgvArticulos";
@@ -97,7 +98,7 @@
             this.buttonEliminarFisico.Name = "buttonEliminarFisico";
             this.buttonEliminarFisico.Size = new System.Drawing.Size(112, 33);
             this.buttonEliminarFisico.TabIndex = 5;
-            this.buttonEliminarFisico.Text = "Eliminación Físico";
+            this.buttonEliminarFisico.Text = "Eliminación Física";
             this.buttonEliminarFisico.UseVisualStyleBackColor = true;
             this.buttonEliminarFisico.Click += new System.EventHandler(this.buttonEliminarFisico_Click);
             // 

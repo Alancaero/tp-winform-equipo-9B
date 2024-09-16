@@ -17,13 +17,19 @@ namespace negocio
             get { return lector; }
         }
 
+        public AccesoDatos()
+        {
+            conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
+            comando = new SqlCommand();
+        }
+
         public void setearConsulta(string consulta)
         {
             comando.CommandType = System.Data.CommandType.Text;
             comando.CommandText = consulta;
         }
 
-        public void EjecutarLectura()
+        public void ejecutarLectura()
         {
             comando.Connection = conexion;
 
@@ -38,7 +44,7 @@ namespace negocio
             }
         }
 
-        public void EjecutarAccion()
+        public void ejecutarAccion()
         {
             comando.Connection = conexion;
             try

@@ -74,10 +74,8 @@ namespace WindowsFormsApp1
 
         private void frmArticulos_Load(object sender, EventArgs e)
         {
-            Cargar();
-            cbxCampo.Items.Add("Numero");
-            cbxCampo.Items.Add("Nombre");
-            cbxCampo.Items.Add("Descripcion");
+                ArticulosNegocio negocio = new ArticulosNegocio();
+                dgvArticulos.DataSource = negocio.listar(); 
         }
 
         private void dgvArticulo_SelectionChanged(object sender, EventArgs e)
