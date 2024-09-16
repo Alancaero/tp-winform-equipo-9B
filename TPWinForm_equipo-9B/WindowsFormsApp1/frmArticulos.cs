@@ -71,7 +71,7 @@ namespace WindowsFormsApp1
             catch (Exception ex) { }
         }
 
-        private void eliminar()
+       /* private void eliminar()
         {
             Articulos seleccionado;
 
@@ -88,7 +88,7 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show(ex.ToString());
             }
-        }
+        }*/
 
         private void frmArticulos_Load(object sender, EventArgs e)
         {
