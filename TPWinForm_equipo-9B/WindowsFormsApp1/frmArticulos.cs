@@ -57,10 +57,21 @@ namespace WindowsFormsApp1
 
         private void buttonEliminarFisico_Click(object sender, EventArgs e)
         {
-            
+            ArticulosNegocio negocio = new ArticulosNegocio();
+            Articulos seleccionado;
+
+
+            try
+            {
+                seleccionado = (Articulos)dgvArticulos.CurrentRow.DataBoundItem;
+                negocio.eliminar(seleccionado.IdArticulo);
+                MessageBox.Show("Eliminando el item " + seleccionado.IdArticulo);
+
+            }
+            catch (Exception ex) { }
         }
 
-        private void Eliminar()
+        private void eliminar()
         {
             Articulos seleccionado;
 
