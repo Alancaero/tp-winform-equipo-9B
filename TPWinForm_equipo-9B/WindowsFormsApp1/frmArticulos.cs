@@ -103,6 +103,7 @@ namespace WindowsFormsApp1
             if (dgvArticulos.CurrentRow != null)
             {
                 Articulos seleccionado = (Articulos)dgvArticulos.CurrentRow.DataBoundItem;
+                CargarImagen(seleccionado.imagen.Url);
                 
             }
         }
@@ -136,6 +137,44 @@ namespace WindowsFormsApp1
             {
                 throw ex;
             }
+        }
+
+        public bool validarFiltro()
+        {
+            if (cbxCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, selecciona un campo para poder filtrar");
+                return true;
+            }
+            if (cbxCriterio.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor, seleccione un criterio para poder filtrar");
+                return true;
+            }
+            if (cbxCampo.SelectedItem.ToString() == "Numero")
+            {
+                if (string.IsNullOrEmpty(txtFiltroAvanzado.Text))
+                {
+                    MessageBox.Show("Debe cargar el filtro para numericos");
+                    return true;
+                }
+                if (!(soloNumeros(txtFiltroAvanzado.Text)))
+                {
+                    MessageBox.Show("Debe cargar el filtro solo por un campo numericos");
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        private bool soloNumeros(string cadena)
+        {
+            foreach(char caracter in cadena)
+            {
+                if (!(char.IsNumber(caracter)))
+                    return false;
+            }
+            return true;
         }
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)

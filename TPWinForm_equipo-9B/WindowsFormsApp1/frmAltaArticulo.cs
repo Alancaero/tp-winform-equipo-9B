@@ -47,14 +47,29 @@ namespace WindowsFormsApp1
 
             try
             {
+                if (articulos == null)
+                    articulos = new Articulos();
+                articulos.imagen = new Imagen();
+
+                
                 art.Codigo = textCodigo.Text;
                 art.Nombre = textNombre.Text;
                 art.Descripcion = textDescripcion.Text;
                 art.precio = decimal.Parse(textPrecio.Text);
+                art.categoria = (Categoria)txtCategoria.SelectedItem;
+                art.marcas = (Marcas)txtMarca.SelectedItem;
 
-
+                if (art.IdArticulo !=0)
+                {
+                    negocio.modificar(art);
+                    MessageBox.Show("Fue modificado");
+                }
+                else
+                {
                 negocio.agregar(art);
-                MessageBox.Show("Agregadooo");
+                MessageBox.Show("Fue agregado");
+                }
+               
                 Close();
 
 
@@ -73,16 +88,27 @@ namespace WindowsFormsApp1
         {
 
             ArticulosNegocio negocio = new ArticulosNegocio();
-         //   pbxArticulo.DataSource = negocio.listar();
-
-            if(articulos != null)
+            //   pbxArticulo.DataSource = negocio.listar();
+            try
             {
-                textCodigo.Text = articulos.Codigo;
-                textDescripcion.Text = articulos.Descripcion;
-                textNombre.Text = articulos.Nombre;
-                textPrecio.Text = articulos.precio.ToString();
+                if(articulos != null)
+                {
+                    textCodigo.Text = articulos.Codigo;
+                    textDescripcion.Text = articulos.Descripcion;
+                    textNombre.Text = articulos.Nombre;
+                    textPrecio.Text = articulos.precio.ToString();
+                    textImagen.Text = articulos.imagen.Url;
+                    CargarImagen(articulos.imagen.Url);
+                    txtCategoria.SelectedValue = articulos.categoria.IdCategoria;
+                    txtMarca.SelectedValue = articulos.marcas.IdMarca;
 
+                }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            
 
         }
 
