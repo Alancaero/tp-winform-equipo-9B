@@ -33,9 +33,32 @@ namespace negocio
             }
         }
 
-        public void ObtenerLista(List<String> urlImagenes)
+        public List<String> ObtenerLista(int idArticulo)
         {
-            ListaImagen = urlImagenes;
+            AccesoDatos datos = new AccesoDatos();
+            List<String> listaImagenes = new List<String>();
+
+            try
+            {
+                datos.setearConsulta("SELECT ImagenUrl FROM IMAGENES WHERE IdArticulo = @idArticulo");
+                datos.setearParametro("@idArticulo", idArticulo);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    listaImagenes.Add((string)datos.Lector["ImagenUrl"]);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion(); 
+            }
+
+            return listaImagenes;
         }
     }
 }

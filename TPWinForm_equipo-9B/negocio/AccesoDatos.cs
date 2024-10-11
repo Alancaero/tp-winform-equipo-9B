@@ -71,6 +71,34 @@ namespace negocio
                 conexion.Close();
             }
         }
+        public int getUltimoIdInsertado()
+        {
+            try
+            {
+
+                setearConsulta("SELECT SCOPE_IDENTITY()");
+
+ 
+                ejecutarLectura();
+
+                if (Lector.Read())
+                {
+                    return Convert.ToInt32(Lector[0]);
+                }
+                else
+                {
+                    throw new Exception("No se pudo obtener el último ID insertado.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                cerrarConexion();
+            }
+        }
 
     }
 }

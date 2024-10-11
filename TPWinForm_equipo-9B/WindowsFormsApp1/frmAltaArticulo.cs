@@ -31,103 +31,105 @@ namespace WindowsFormsApp1
             Text = "Modificar Articulos";
         }
 
-
-
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        
-
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
-            Articulos art = new Articulos();
             ArticulosNegocio negocio = new ArticulosNegocio();
 
             try
             {
-                if (articulos == null)
-                    articulos = new Articulos();
-                articulos.imagen = new Imagen();
-
-                
-                art.Codigo = textCodigo.Text;
-                art.Nombre = textNombre.Text;
-                art.Descripcion = textDescripcion.Text;
-                art.precio = decimal.Parse(textPrecio.Text);
-                art.categoria = (Categoria)txtCategoria.SelectedItem;
-                art.marcas = (Marcas)txtMarca.SelectedItem;
-
-                if (art.IdArticulo !=0)
+                if (articulos == null) 
                 {
-                    negocio.modificar(art);
-                    MessageBox.Show("Fue modificado");
+                    Articulos nuevoArticulo = new Articulos();
+                    nuevoArticulo.Codigo = textCodigo.Text;
+                    nuevoArticulo.Nombre = textNombre.Text;
+                    nuevoArticulo.Descripcion = textDescripcion.Text;
+                    nuevoArticulo.precio = decimal.Parse(textPrecio.Text);
+                    nuevoArticulo.categoria = (Categoria)txtCategoria.SelectedItem;
+                    nuevoArticulo.marcas = (Marcas)txtMarca.SelectedItem;
+
+                    negocio.agregar(nuevoArticulo); 
+                    MessageBox.Show("Artículo agregado exitosamente.");
                 }
-                else
+                else 
                 {
-                negocio.agregar(art);
-                MessageBox.Show("Fue agregado");
+                    articulos.Codigo = textCodigo.Text;
+                    articulos.Nombre = textNombre.Text;
+                    articulos.Descripcion = textDescripcion.Text;
+                    articulos.precio = decimal.Parse(textPrecio.Text);
+                    articulos.categoria = (Categoria)txtCategoria.SelectedItem;
+                    articulos.marcas = (Marcas)txtMarca.SelectedItem;
+
+                    negocio.modificar(articulos); 
+                    MessageBox.Show("Artículo modificado exitosamente.");
                 }
-               
-                Close();
 
-
+                Close(); 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
         }
 
-       
-
-    
 
         private void frmAltaArticulo_Load(object sender, EventArgs e)
         {
+            CategoriaNegocio categoriaNegocio = new CategoriaNegocio();
+            MarcasNegocio marcasNegocio = new MarcasNegocio();
 
-            ArticulosNegocio negocio = new ArticulosNegocio();
-            //   pbxArticulo.DataSource = negocio.listar();
             try
             {
-                if(articulos != null)
+                List<Categoria> listaCategorias = categoriaNegocio.listar();
+                List<Marcas> listaMarcas = marcasNegocio.listar();
+
+                txtCategoria.DataSource = listaCategorias;
+                txtCategoria.DisplayMember = "Nombre"; 
+                txtCategoria.ValueMember = "IdCategoria"; 
+
+                txtMarca.DataSource = listaMarcas;
+                txtMarca.DisplayMember = "Nombre"; 
+                txtMarca.ValueMember = "IdMarca"; 
+
+                if (articulos != null)
                 {
                     textCodigo.Text = articulos.Codigo;
                     textDescripcion.Text = articulos.Descripcion;
                     textNombre.Text = articulos.Nombre;
                     textPrecio.Text = articulos.precio.ToString();
                     textImagen.Text = articulos.imagen.Url;
+
                     CargarImagen(articulos.imagen.Url);
+
                     txtCategoria.SelectedValue = articulos.categoria.IdCategoria;
                     txtMarca.SelectedValue = articulos.marcas.IdMarca;
-
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-            
-
         }
 
         private void textImagen_Leave(object sender, EventArgs e)
         {
             CargarImagen(textImagen.Text);
-        } 
+        }
 
         private void CargarImagen(string imagen)
         {
             try
             {
-             pbxArticulo.Load(imagen);
+                pbxArticulo.Load(imagen);
             }
             catch
             {
-                pbxArticulo.Load("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
+                pbxArticulo.Load("https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png");
             }
-            
         }
 
         private void btnAgregarImagen_Click(object sender, EventArgs e)
@@ -141,10 +143,8 @@ namespace WindowsFormsApp1
                 CargarImagen(archivo.FileName);
             }
         }
-
         private void textNombre_TextChanged(object sender, EventArgs e)
-        {
+        { }
 
-        }
     }
 }

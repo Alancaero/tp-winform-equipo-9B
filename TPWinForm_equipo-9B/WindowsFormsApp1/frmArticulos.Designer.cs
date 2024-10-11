@@ -63,7 +63,7 @@
             this.dgvArticulos.AccessibleName = "dgvArticulos";
             this.dgvArticulos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvArticulos.Location = new System.Drawing.Point(4, 111);
-            this.dgvArticulos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvArticulos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvArticulos.Name = "dgvArticulos";
             this.dgvArticulos.RowHeadersWidth = 51;
             this.dgvArticulos.Size = new System.Drawing.Size(823, 353);
@@ -73,7 +73,7 @@
             // pbxArticulos
             // 
             this.pbxArticulos.Location = new System.Drawing.Point(847, 111);
-            this.pbxArticulos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbxArticulos.Margin = new System.Windows.Forms.Padding(4);
             this.pbxArticulos.Name = "pbxArticulos";
             this.pbxArticulos.Size = new System.Drawing.Size(299, 353);
             this.pbxArticulos.TabIndex = 2;
@@ -82,7 +82,7 @@
             // buttonAgregar
             // 
             this.buttonAgregar.Location = new System.Drawing.Point(16, 471);
-            this.buttonAgregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAgregar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAgregar.Name = "buttonAgregar";
             this.buttonAgregar.Size = new System.Drawing.Size(100, 39);
             this.buttonAgregar.TabIndex = 3;
@@ -93,7 +93,7 @@
             // buttonModificar
             // 
             this.buttonModificar.Location = new System.Drawing.Point(164, 471);
-            this.buttonModificar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonModificar.Margin = new System.Windows.Forms.Padding(4);
             this.buttonModificar.Name = "buttonModificar";
             this.buttonModificar.Size = new System.Drawing.Size(100, 39);
             this.buttonModificar.TabIndex = 4;
@@ -104,7 +104,7 @@
             // buttonEliminarFisico
             // 
             this.buttonEliminarFisico.Location = new System.Drawing.Point(313, 471);
-            this.buttonEliminarFisico.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonEliminarFisico.Margin = new System.Windows.Forms.Padding(4);
             this.buttonEliminarFisico.Name = "buttonEliminarFisico";
             this.buttonEliminarFisico.Size = new System.Drawing.Size(149, 41);
             this.buttonEliminarFisico.TabIndex = 5;
@@ -126,7 +126,7 @@
             // 
             this.cbxCampo.FormattingEnabled = true;
             this.cbxCampo.Location = new System.Drawing.Point(128, 530);
-            this.cbxCampo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxCampo.Margin = new System.Windows.Forms.Padding(4);
             this.cbxCampo.Name = "cbxCampo";
             this.cbxCampo.Size = new System.Drawing.Size(160, 24);
             this.cbxCampo.TabIndex = 7;
@@ -146,7 +146,7 @@
             // 
             this.cbxCriterio.FormattingEnabled = true;
             this.cbxCriterio.Location = new System.Drawing.Point(456, 530);
-            this.cbxCriterio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxCriterio.Margin = new System.Windows.Forms.Padding(4);
             this.cbxCriterio.Name = "cbxCriterio";
             this.cbxCriterio.Size = new System.Drawing.Size(160, 24);
             this.cbxCriterio.TabIndex = 9;
@@ -164,11 +164,12 @@
             // txtFiltro
             // 
             this.txtFiltro.Location = new System.Drawing.Point(128, 64);
-            this.txtFiltro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFiltro.Margin = new System.Windows.Forms.Padding(4);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(245, 22);
             this.txtFiltro.TabIndex = 11;
             this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
+ 
             // 
             // label1
             // 
@@ -216,7 +217,7 @@
             this.Controls.Add(this.pbxArticulos);
             this.Controls.Add(this.dgvArticulos);
             this.Controls.Add(this.lblArticulo);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximumSize = new System.Drawing.Size(1189, 605);
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1189, 605);

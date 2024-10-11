@@ -31,11 +31,13 @@ namespace WindowsFormsApp1
         {
             try
             {
+
+                pbxArticulos.SizeMode = PictureBoxSizeMode.Zoom;
                 pbxArticulos.Load(Imagen);
             }
             catch(Exception ex)
             {
-                pbxArticulos.Load("https://efectocolibri.com/wp-content/uploads/2021/01/placeholder.png");
+                pbxArticulos.Load("https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png");
             }
         }
 
@@ -71,24 +73,6 @@ namespace WindowsFormsApp1
             catch (Exception ex) { }
         }
 
-       /* private void eliminar()
-        {
-            Articulos seleccionado;
-
-            try
-            {
-                DialogResult respuesta = MessageBox.Show("¿Queres eliminar el articulo?","Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (respuesta == DialogResult.Yes)
-                {
-                    seleccionado = (Articulos)dgvArticulos.CurrentRow.DataBoundItem;
-
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }*/
 
         private void frmArticulos_Load(object sender, EventArgs e)
         {
@@ -179,22 +163,29 @@ namespace WindowsFormsApp1
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
-            List<Articulos> listaFiltrada;
-            string filtro = txtFiltro.Text;
+            string filtro = txtFiltro.Text.ToUpper();
 
-            if (filtro.Length >= 3)
+
+            if (listaArticulos != null && listaArticulos.Count > 0) 
             {
-                listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()));
+                List<Articulos> listaFiltrada;
 
-            }
-            else
-            {
-                listaFiltrada = listaArticulos;
-            }
+                if (filtro.Length >= 1)
+                {
+                    listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro));
+                }
+                else
+                {
+                    listaFiltrada = listaArticulos;
+                }
 
-            dgvArticulos.DataSource = null;
-            dgvArticulos.DataSource = listaFiltrada;
-            
+                dgvArticulos.DataSource = null;
+                dgvArticulos.DataSource = listaFiltrada;
+                dgvArticulos.Refresh();
+            }
         }
+
+       
+
     }
 }
