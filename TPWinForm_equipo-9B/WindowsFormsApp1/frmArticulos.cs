@@ -95,7 +95,7 @@ namespace WindowsFormsApp1
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
             string opcion = cbxCampo.SelectedIndex.ToString();
-            if (opcion == "Numero")
+            if (opcion == "Precio")
             {
                 cbxCriterio.Items.Clear();
                 cbxCriterio.Items.Add("Mayor a");
@@ -170,9 +170,9 @@ namespace WindowsFormsApp1
             {
                 List<Articulos> listaFiltrada;
 
-                if (filtro.Length >= 1)
+                if (filtro.Length >= 2)
                 {
-                    listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro));
+                    listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()));
                 }
                 else
                 {
@@ -185,7 +185,22 @@ namespace WindowsFormsApp1
             }
         }
 
-       
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ArticulosNegocio negocio = new ArticulosNegocio();
 
+            try
+            {
+                string campo = cbxCampo.SelectedItem.ToString();
+                string criterio = cbxCriterio.SelectedItem.ToString();
+                string filtro = txtFiltroAvanzado.Text;
+                dgvArticulos.DataSource = negocio.Filtrar(campo, criterio, filtro);
+                
+            }
+            catch(Exception ex)
+            {
+               MessageBox.Show(ex.ToString());
+            }
+        }
     }
 }

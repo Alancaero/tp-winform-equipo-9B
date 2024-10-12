@@ -42,7 +42,7 @@
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtFiltroAvanzado = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulos)).BeginInit();
             this.SuspendLayout();
@@ -169,7 +169,6 @@
             this.txtFiltro.Size = new System.Drawing.Size(245, 22);
             this.txtFiltro.TabIndex = 11;
             this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
- 
             // 
             // label1
             // 
@@ -188,21 +187,22 @@
             this.txtFiltroAvanzado.Size = new System.Drawing.Size(132, 22);
             this.txtFiltroAvanzado.TabIndex = 15;
             // 
-            // button1
+            // button
             // 
-            this.button1.Location = new System.Drawing.Point(950, 523);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button.Location = new System.Drawing.Point(950, 523);
+            this.button.Name = "button";
+            this.button.Size = new System.Drawing.Size(75, 23);
+            this.button.TabIndex = 16;
+            this.button.Text = "Buscar";
+            this.button.UseVisualStyleBackColor = true;
+            this.button.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1171, 558);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button);
             this.Controls.Add(this.txtFiltroAvanzado);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtFiltro);
@@ -248,7 +248,7 @@
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtFiltroAvanzado;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button;
     }
 }
 

@@ -154,5 +154,20 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+        public object Filtrar(string campo,string criterio,string filtro)
+        {
+            List<Articulos> lista = new List<Articulos>();
+            AccesoDatos datos = new AccesoDatos();
+
+            try
+            {
+                return lista;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
