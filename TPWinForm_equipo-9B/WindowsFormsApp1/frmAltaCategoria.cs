@@ -44,7 +44,15 @@ namespace WindowsFormsApp1
             {
                 if (categoria == null)
                 {
-     
+                    bool existeCodigo = categoriaNegocio.ExisteCategoria(txtNombreCategoria.Text);
+
+                    if (existeCodigo)
+                    {
+                 
+                        MessageBox.Show("El código del artículo ya existe. Por favor, ingrese un código diferente.");
+                        return;
+                    }
+
                     Categoria nuevaCategoria = new Categoria();
                     nuevaCategoria.Nombre = txtNombreCategoria.Text;
                     categoriaNegocio.Agregar(nuevaCategoria);

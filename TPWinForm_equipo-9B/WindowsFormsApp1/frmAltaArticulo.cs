@@ -49,7 +49,7 @@ namespace WindowsFormsApp1
 
                     if (existeCodigo)
                     {
-                        // Mostrar un mensaje y salir si el código ya está en uso
+        
                         MessageBox.Show("El código del artículo ya existe. Por favor, ingrese un código diferente.");
                         return;
                     }

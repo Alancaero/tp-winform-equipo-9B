@@ -87,22 +87,14 @@ namespace negocio
 
             try
             {
-                
-                string consulta = "SELECT COUNT(*) FROM CATEGORIAS WHERE Descripcion = @nombre";
 
-                if (idCategoria != null)
-                {
-                    consulta += " AND Id <> @id"; // Excluir la categoría actual si es una modificación
-                    datos.setearParametro("@id", idCategoria);
-                }
-
-                datos.setearConsulta(consulta);
+                datos.setearConsulta("SELECT COUNT(*) FROM CATEGORIAS WHERE Descripcion = @nombre");
                 datos.setearParametro("@nombre", nombreCategoria);
-
                 datos.ejecutarLectura();
+
                 if (datos.Lector.Read())
                 {
-                    existe = datos.Lector.GetInt32(0) > 0; // Si COUNT(*) > 0, la categoría ya existe
+                    existe = datos.Lector.GetInt32(0) > 0; 
                 }
             }
             catch (Exception ex)

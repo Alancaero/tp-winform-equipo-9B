@@ -251,7 +251,6 @@ namespace negocio
 
                 if (datos.Lector.Read())
                 {
-         
                     existe = datos.Lector.GetInt32(0) > 0;
                 }
             }
