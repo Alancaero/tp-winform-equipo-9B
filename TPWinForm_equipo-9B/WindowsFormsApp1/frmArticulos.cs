@@ -163,7 +163,7 @@ namespace WindowsFormsApp1
 
         private void txtFiltro_TextChanged(object sender, EventArgs e)
         {
-            string filtro = txtFiltro.Text.ToUpper();
+            string filtro = txtFiltro.Text;
 
 
             if (listaArticulos != null && listaArticulos.Count > 0) 
@@ -172,7 +172,7 @@ namespace WindowsFormsApp1
 
                 if (filtro.Length >= 2)
                 {
-                    listaFiltrada = listaArticulos.FindAll(x => x.Nombre.ToUpper().Contains(filtro.ToUpper()));
+                    listaFiltrada = listaArticulos.FindAll(x => x.Nombre.Contains(filtro));
                 }
                 else
                 {
@@ -201,6 +201,13 @@ namespace WindowsFormsApp1
             {
                MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+
+            frmCategoria alta = new frmCategoria();
+            alta.ShowDialog();
         }
     }
 }
