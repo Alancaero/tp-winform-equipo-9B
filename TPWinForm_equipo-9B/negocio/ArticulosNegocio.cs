@@ -45,8 +45,8 @@ namespace negocio
                         Nombre = datos.Lector["NombreCategoria"] != DBNull.Value ? (string)datos.Lector["NombreCategoria"] : "Categoría desconocida"
                     };
 
-                    aux.imagen = new Imagen();
-                    aux.imagen.Url = datos.Lector["ImagenUrl"] != DBNull.Value ? datos.Lector["ImagenUrl"].ToString() : null;
+                   aux.imagen = new Imagen();
+                   aux.imagen.Url = datos.Lector["ImagenUrl"] != DBNull.Value ? datos.Lector["ImagenUrl"].ToString() : null;
 
                     lista.Add(aux);
                 }
@@ -155,18 +155,85 @@ namespace negocio
             }
         }
 
-        public object Filtrar(string campo,string criterio,string filtro)
+        public List<Articulos> Filtrar(string campo, string criterio, string filtro)
         {
             List<Articulos> lista = new List<Articulos>();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
+                string consulta = "SELECT a.Id, a.Codigo, a.Nombre, a.Descripcion, a.IdMarca, a.IdCategoria, a.Precio, i.ImagenUrl, m.Descripcion AS NombreMarca, c.Descripcion AS NombreCategoria " +
+                                     "FROM ARTICULOS a " +
+                                     "LEFT JOIN IMAGENES i ON a.Id = i.IdArticulo " +         
+                                     "LEFT JOIN MARCAS m ON a.IdMarca = m.Id " +
+                                     "LEFT JOIN CATEGORIAS c ON a.IdCategoria = c.Id  WHERE ";
+                consulta += campo;
+
+                switch (criterio)
+                {
+                    case "Mayor a":
+                        consulta += " > " + filtro;
+                        break;
+                    case "Menor a":
+                        consulta += " < " + filtro;
+                        break;
+                    case "Igual a":
+                        consulta += " = " + filtro;
+                        break;
+                    case "Comienza con":
+                        consulta += " LIKE '" + filtro + "%'";
+                        break;
+                    case "Termina con":
+                        consulta += " LIKE '%" + filtro + "'";
+                        break;
+                    case "Contiene":
+                        consulta += " LIKE '%" + filtro + "%'";
+                        break;
+                    default:
+                        throw new Exception("Criterio no válido");
+                }
+
+       
+                datos.setearConsulta(consulta);
+                datos.ejecutarLectura();
+
+                while (datos.Lector.Read())
+                {
+                    Articulos articulo = new Articulos();
+                    articulo.IdArticulo = (int)datos.Lector["Id"];
+                    articulo.Codigo = (string)datos.Lector["Codigo"];
+                    articulo.Nombre = (string)datos.Lector["Nombre"];
+                    articulo.Descripcion = (string)datos.Lector["Descripcion"];
+                    articulo.precio = (decimal)datos.Lector["precio"];
+
+
+                    articulo.marcas = new Marcas
+                    {
+                        IdMarca = datos.Lector["IdMarca"] != DBNull.Value ? (int)datos.Lector["IdMarca"] : 0,
+                        Nombre = datos.Lector["NombreMarca"] != DBNull.Value ? (string)datos.Lector["NombreMarca"] : "Marca desconocida"
+                    };
+
+                    articulo.categoria = new Categoria
+                    {
+                        IdCategoria = datos.Lector["IdCategoria"] != DBNull.Value ? (int)datos.Lector["IdCategoria"] : 0,
+                        Nombre = datos.Lector["NombreCategoria"] != DBNull.Value ? (string)datos.Lector["NombreCategoria"] : "Categoría desconocida"
+                    };
+
+                    articulo.imagen = new Imagen();
+                    articulo.imagen.Url = datos.Lector["ImagenUrl"] != DBNull.Value ? datos.Lector["ImagenUrl"].ToString() : null;
+
+                    lista.Add(articulo);
+                }
+
                 return lista;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
             }
         }
 

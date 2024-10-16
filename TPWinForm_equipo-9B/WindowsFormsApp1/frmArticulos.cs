@@ -24,22 +24,35 @@ namespace WindowsFormsApp1
             InitializeComponent();
         }
 
- 
+
 
 
         private void CargarImagen(string Imagen)
         {
             try
             {
-
-                pbxArticulos.SizeMode = PictureBoxSizeMode.Zoom;
-                pbxArticulos.Load(Imagen);
+                // Verifica si la URL de la imagen no es nula ni está vacía
+                if (!string.IsNullOrEmpty(Imagen))
+                {
+                    pbxArticulos.SizeMode = PictureBoxSizeMode.Zoom;
+                    pbxArticulos.Load(Imagen);  // Cargar la imagen si está disponible
+                }
+                else
+                {
+      
+                    pbxArticulos.Load("https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png");
+                }
             }
-            catch(Exception ex)
-            {
+            catch (Exception ex)
+            { 
                 pbxArticulos.Load("https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png");
             }
         }
+
+
+
+
+
 
         private void buttonAgregar_Click(object sender, EventArgs e)
         {
@@ -87,14 +100,28 @@ namespace WindowsFormsApp1
             if (dgvArticulos.CurrentRow != null)
             {
                 Articulos seleccionado = (Articulos)dgvArticulos.CurrentRow.DataBoundItem;
-                CargarImagen(seleccionado.imagen.Url);
-                
+
+
+                if (seleccionado.imagen != null && !string.IsNullOrEmpty(seleccionado.imagen.Url))
+                {
+                    CargarImagen(seleccionado.imagen.Url);  
+                }
+                else
+                {
+
+                    CargarImagen(null);
+                }
             }
         }
 
+
+
         private void cboCampo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string opcion = cbxCampo.SelectedIndex.ToString();
+
+            string opcion = cbxCampo.SelectedItem.ToString();
+
+                
             if (opcion == "Precio")
             {
                 cbxCriterio.Items.Clear();
@@ -209,5 +236,46 @@ namespace WindowsFormsApp1
             frmCategoria alta = new frmCategoria();
             alta.ShowDialog();
         }
+
+        private void btn_GestionarMarcas_Click(object sender, EventArgs e)
+        {
+            frmMarcas alta = new frmMarcas();
+            alta.ShowDialog();
+        }
+
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+         
+                if (dgvArticulos.SelectedRows.Count > 0)
+                {
+
+                DataGridViewRow row = dgvArticulos.SelectedRows[0];
+
+                    Detalle detallesForm = new Detalle();
+
+                 
+                    detallesForm.CodigoArticulo = row.Cells["Codigo"].Value.ToString();
+                    detallesForm.NombreArticulo = row.Cells["Nombre"].Value.ToString();
+                    detallesForm.DescripcionArticulo = row.Cells["Descripcion"].Value.ToString();
+                    detallesForm.PrecioArticulo = row.Cells["precio"].Value.ToString();
+                    detallesForm.CategoriaArticulo = row.Cells["categoria"].Value.ToString();
+                    detallesForm.MarcaArticulo = row.Cells["marcas"].Value.ToString();
+
+
+             
+                detallesForm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, selecciona un artículo para ver los detalles.");
+                }
+            }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            ArticulosNegocio negocio = new ArticulosNegocio();
+            dgvArticulos.DataSource = negocio.listar();
+
+        }
     }
-}
+    }
