@@ -78,5 +78,48 @@ namespace negocio
                 datos.cerrarConexion();
             }
         }
+
+
+        public bool ExisteCategoria(string nombreCategoria, int? idCategoria = null)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            bool existe = false;
+
+            try
+            {
+                
+                string consulta = "SELECT COUNT(*) FROM CATEGORIAS WHERE Descripcion = @nombre";
+
+                if (idCategoria != null)
+                {
+                    consulta += " AND Id <> @id"; // Excluir la categoría actual si es una modificación
+                    datos.setearParametro("@id", idCategoria);
+                }
+
+                datos.setearConsulta(consulta);
+                datos.setearParametro("@nombre", nombreCategoria);
+
+                datos.ejecutarLectura();
+                if (datos.Lector.Read())
+                {
+                    existe = datos.Lector.GetInt32(0) > 0; // Si COUNT(*) > 0, la categoría ya existe
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            return existe;
+        }
+
+
+
+
+
     }
 }

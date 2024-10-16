@@ -46,8 +46,6 @@
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.pbxArticulo = new System.Windows.Forms.PictureBox();
             this.btnAgregarImagen = new System.Windows.Forms.Button();
-            this.buttonAgregarCategoria = new System.Windows.Forms.Button();
-            this.buttonAgregarMarca = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxArticulo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -212,32 +210,11 @@
             this.btnAgregarImagen.UseVisualStyleBackColor = true;
             this.btnAgregarImagen.Click += new System.EventHandler(this.btnAgregarImagen_Click);
             // 
-            // buttonAgregarCategoria
-            // 
-            this.buttonAgregarCategoria.Location = new System.Drawing.Point(299, 176);
-            this.buttonAgregarCategoria.Name = "buttonAgregarCategoria";
-            this.buttonAgregarCategoria.Size = new System.Drawing.Size(27, 23);
-            this.buttonAgregarCategoria.TabIndex = 18;
-            this.buttonAgregarCategoria.Text = "+";
-            this.buttonAgregarCategoria.UseVisualStyleBackColor = true;
-            // 
-            // buttonAgregarMarca
-            // 
-            this.buttonAgregarMarca.Location = new System.Drawing.Point(299, 140);
-            this.buttonAgregarMarca.Name = "buttonAgregarMarca";
-            this.buttonAgregarMarca.Size = new System.Drawing.Size(27, 23);
-            this.buttonAgregarMarca.TabIndex = 19;
-            this.buttonAgregarMarca.Text = "+";
-            this.buttonAgregarMarca.UseVisualStyleBackColor = true;
-            this.buttonAgregarMarca.Click += new System.EventHandler(this.button2_Click);
-            // 
             // frmAltaArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(614, 400);
-            this.Controls.Add(this.buttonAgregarMarca);
-            this.Controls.Add(this.buttonAgregarCategoria);
             this.Controls.Add(this.btnAgregarImagen);
             this.Controls.Add(this.pbxArticulo);
             this.Controls.Add(this.buttonCancelar);
@@ -289,7 +266,5 @@
         private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.PictureBox pbxArticulo;
         private System.Windows.Forms.Button btnAgregarImagen;
-        private System.Windows.Forms.Button buttonAgregarCategoria;
-        private System.Windows.Forms.Button buttonAgregarMarca;
     }
 }

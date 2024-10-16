@@ -169,5 +169,39 @@ namespace negocio
                 throw ex;
             }
         }
+
+        public bool ExisteCodigo(string codigo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            bool existe = false;
+
+            try
+            {
+
+                datos.setearConsulta("SELECT COUNT(*) FROM ARTICULOS WHERE Codigo = @Codigo");
+                datos.setearParametro("@Codigo", codigo);
+                datos.ejecutarLectura();
+
+                if (datos.Lector.Read())
+                {
+         
+                    existe = datos.Lector.GetInt32(0) > 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+
+            return existe;
+        }
+
+
+
+
     }
 }

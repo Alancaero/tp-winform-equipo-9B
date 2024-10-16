@@ -44,6 +44,17 @@ namespace WindowsFormsApp1
             {
                 if (articulos == null) 
                 {
+
+                    bool existeCodigo = negocio.ExisteCodigo(textCodigo.Text);
+
+                    if (existeCodigo)
+                    {
+                        // Mostrar un mensaje y salir si el código ya está en uso
+                        MessageBox.Show("El código del artículo ya existe. Por favor, ingrese un código diferente.");
+                        return;
+                    }
+
+
                     Articulos nuevoArticulo = new Articulos();
                     nuevoArticulo.Codigo = textCodigo.Text;
                     nuevoArticulo.Nombre = textNombre.Text;
