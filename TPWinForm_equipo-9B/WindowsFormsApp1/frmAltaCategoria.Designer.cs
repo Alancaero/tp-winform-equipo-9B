@@ -36,25 +36,27 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 42);
+            this.label1.Location = new System.Drawing.Point(39, 52);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.Size = new System.Drawing.Size(79, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Descripción";
-
             // 
             // txtNombreCategoria
             // 
-            this.txtNombreCategoria.Location = new System.Drawing.Point(117, 39);
+            this.txtNombreCategoria.Location = new System.Drawing.Point(156, 48);
+            this.txtNombreCategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNombreCategoria.Name = "txtNombreCategoria";
-            this.txtNombreCategoria.Size = new System.Drawing.Size(143, 20);
+            this.txtNombreCategoria.Size = new System.Drawing.Size(189, 22);
             this.txtNombreCategoria.TabIndex = 1;
             // 
             // btn_AceptarCategoria
             // 
-            this.btn_AceptarCategoria.Location = new System.Drawing.Point(154, 74);
+            this.btn_AceptarCategoria.Location = new System.Drawing.Point(205, 91);
+            this.btn_AceptarCategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_AceptarCategoria.Name = "btn_AceptarCategoria";
-            this.btn_AceptarCategoria.Size = new System.Drawing.Size(58, 22);
+            this.btn_AceptarCategoria.Size = new System.Drawing.Size(77, 27);
             this.btn_AceptarCategoria.TabIndex = 2;
             this.btn_AceptarCategoria.Text = "Aceptar";
             this.btn_AceptarCategoria.UseVisualStyleBackColor = true;
@@ -62,12 +64,13 @@
             // 
             // frmAltaCategoria
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(325, 108);
+            this.ClientSize = new System.Drawing.Size(433, 133);
             this.Controls.Add(this.btn_AceptarCategoria);
             this.Controls.Add(this.txtNombreCategoria);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmAltaCategoria";
             this.Text = "Alta de Categorias";
             this.ResumeLayout(false);
